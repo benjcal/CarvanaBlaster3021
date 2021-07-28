@@ -2,12 +2,10 @@ extends Node
 
 export (PackedScene) var Asteroid
 export (PackedScene) var Hauler
+export (PackedScene) var Laser
 
 var hauler
 var hauler_speed = 400
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 
 
 # Called when the node enters the scene tree for the first time.
@@ -23,7 +21,8 @@ func new_game():
 	add_child(hauler)
 
 func _process(delta):
-	var velocity = Vector2()  # The player's movement vector.
+	# move hauler
+	var velocity = Vector2()
 	if Input.is_action_pressed("ui_right"):
 		velocity.x += 1
 	if Input.is_action_pressed("ui_left"):
@@ -36,7 +35,15 @@ func _process(delta):
 		velocity = velocity.normalized() * hauler_speed
 
 	hauler.position += velocity * delta
-
+	
+	# fire laser
+	if Input.is_action_just_pressed("ui_accept"):	
+		var laser = Laser.instance()
+		add_child(laser)
+		laser.position = Vector2(hauler.position.x + 80, hauler.position.y) 
+		
+		laser.linear_velocity = Vector2(1500, 0)
+	
 func _on_StartTimer_timeout():
 	print("blah")
 	$AsteroidSpawnTimer.start()
