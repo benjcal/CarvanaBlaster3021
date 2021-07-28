@@ -1,7 +1,10 @@
 extends Node
 
 export (PackedScene) var Asteroid
+export (PackedScene) var Hauler
 
+var hauler
+var hauler_speed = 400
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -15,10 +18,24 @@ func _ready():
 func new_game():
 	print("123")
 	$StartTimer.start()
+	
+	hauler = Hauler.instance()
+	add_child(hauler)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	var velocity = Vector2()  # The player's movement vector.
+	if Input.is_action_pressed("ui_right"):
+		velocity.x += 1
+	if Input.is_action_pressed("ui_left"):
+		velocity.x -= 1
+	if Input.is_action_pressed("ui_down"):
+		velocity.y += 1
+	if Input.is_action_pressed("ui_up"):
+		velocity.y -= 1
+	if velocity.length() > 0:
+		velocity = velocity.normalized() * hauler_speed
+
+	hauler.position += velocity * delta
 
 func _on_StartTimer_timeout():
 	print("blah")
