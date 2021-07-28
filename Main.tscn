@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Asteroid.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/Hauler.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/Solar System B1.png" type="Texture" id=4]
+[ext_resource path="res://Laser.tscn" type="PackedScene" id=4]
 [ext_resource path="res://ParallaxBackground.gd" type="Script" id=5]
+[ext_resource path="res://assets/Solar System B1.png" type="Texture" id=6]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -15,6 +16,7 @@ _data = {
 script = ExtResource( 1 )
 Asteroid = ExtResource( 2 )
 Hauler = ExtResource( 3 )
+Laser = ExtResource( 4 )
 
 [node name="AsteroidSpawnTimer" type="Timer" parent="."]
 
@@ -40,7 +42,7 @@ motion_mirroring = Vector2( 5120, 0 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2( 0, 304 )
-texture = ExtResource( 4 )
+texture = ExtResource( 6 )
 
 [connection signal="timeout" from="AsteroidSpawnTimer" to="." method="_on_AsteroidSpawnTimer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
