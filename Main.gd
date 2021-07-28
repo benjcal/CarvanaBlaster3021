@@ -14,7 +14,6 @@ func _ready():
 	new_game()
 
 func new_game():
-	print("123")
 	$StartTimer.start()
 	
 	hauler = Hauler.instance()
@@ -45,7 +44,6 @@ func _process(delta):
 		laser.linear_velocity = Vector2(1500, 0)
 	
 func _on_StartTimer_timeout():
-	print("blah")
 	$AsteroidSpawnTimer.start()
 	# Replace with function body.
 
