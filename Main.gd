@@ -16,7 +16,6 @@ func _ready():
 	new_game()
 
 func new_game():
-	print("123")
 	$StartTimer.start()
 	
 	hauler = Hauler.instance()
@@ -38,7 +37,6 @@ func _process(delta):
 	hauler.position += velocity * delta
 
 func _on_StartTimer_timeout():
-	print("blah")
 	$AsteroidSpawnTimer.start()
 	# Replace with function body.
 

@@ -12,10 +12,8 @@ var max_rotation_speed = 10
 var base_rotation_speed = PI / 128
 var rotation_speed = 0
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	random_rotation()
-	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -23,11 +21,13 @@ func _process(delta):
 #	pass
 
 func _on_VisibilityNotifier2D_screen_exited():
-	queue_free() # Replace with function body.
+	queue_free()
 
 func _on_Asteroid_body_shape_entered(body_id, body, body_shape, local_shape):
 	random_rotation()
-	pass # Replace with function body.
+
+func blowup():
+	queue_free()
 
 func random_rotation():
 	rotation_speed = rand_range(min_rotation_speed, max_rotation_speed) * base_rotation_speed
