@@ -3,7 +3,7 @@
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Asteroid.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/Hauler.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Laser.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/Laser.tscn" type="PackedScene" id=4]
 [ext_resource path="res://ParallaxBackground.gd" type="Script" id=5]
 [ext_resource path="res://assets/Solar System B1.png" type="Texture" id=6]
 
