@@ -31,3 +31,14 @@ func blowup():
 
 func random_rotation():
 	rotation_speed = rand_range(min_rotation_speed, max_rotation_speed) * base_rotation_speed
+
+
+
+func _on_Asteroid_body_entered(body):
+	
+	if body.name.find("Laser", 0) > 0:
+		linear_velocity = Vector2(0,0)
+		rotation = 0
+		$Sprite.hide()
+		$CPUParticles2D.emitting = true
+
