@@ -1,0 +1,36 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/HUD.gd" type="Script" id=1]
+
+[node name="HUD" type="MarginContainer"]
+anchor_right = 1.0
+margin_left = 20.0
+margin_top = 20.0
+margin_right = -20.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Bar" type="HBoxContainer" parent="."]
+margin_right = 984.0
+margin_bottom = 14.0
+
+[node name="Label" type="Label" parent="Bar"]
+margin_right = 42.0
+margin_bottom = 14.0
+text = "Health"
+
+[node name="HealthGauge" type="ProgressBar" parent="Bar"]
+margin_left = 46.0
+margin_right = 196.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 150, 0 )
+value = 75.0
+
+[node name="Score" type="Label" parent="."]
+margin_right = 984.0
+margin_bottom = 14.0
+text = "Score: 100"
+align = 1
