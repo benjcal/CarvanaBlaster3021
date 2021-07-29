@@ -25,7 +25,7 @@ Laser = ExtResource( 4 )
 Explosion = ExtResource( 11 )
 
 [node name="AsteroidSpawnTimer" type="Timer" parent="."]
-wait_time = 0.4
+wait_time = 0.01
 
 [node name="AsteroidPath" type="Path2D" parent="."]
 curve = SubResource( 1 )

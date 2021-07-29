@@ -75,6 +75,8 @@ func _on_AsteroidSpawnTimer_timeout():
 	
 func on_damage_taken():
 	hauler_health -= 20
+	
+	
 	if hauler_health <= 0:
 		var e = Explosion.instance()
 		add_child(e)
