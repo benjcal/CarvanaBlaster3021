@@ -17,6 +17,7 @@ func new_game():
 	$StartTimer.start()
 	
 	hauler = Hauler.instance()
+	hauler.connect("damage_taken", self, "on_damage_taken")
 	add_child(hauler)
 
 func _process(delta):
@@ -65,3 +66,6 @@ func _on_AsteroidSpawnTimer_timeout():
 	roid.linear_velocity = Vector2(rand_range(roid.min_speed, roid.max_speed), 0)
 	roid.linear_velocity = roid.linear_velocity.rotated(direction)
 	 # Replace with function body.
+	
+func on_damage_taken():
+	$HUD.take_damage()
