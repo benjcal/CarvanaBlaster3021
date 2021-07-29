@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Asteroid.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://ParallaxBackground.gd" type="Script" id=5]
 [ext_resource path="res://assets/Solar System B1.png" type="Texture" id=6]
 [ext_resource path="res://scenes/HUD.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/CarvanaBlasterLevelOne.mp3" type="AudioStream" id=8]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -46,6 +47,8 @@ position = Vector2( 0, 304 )
 texture = ExtResource( 6 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+autoplay = true
 
 [node name="HUD" parent="." instance=ExtResource( 7 )]
 
