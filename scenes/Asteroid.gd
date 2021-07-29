@@ -2,6 +2,8 @@ extends RigidBody2D
 
 export (PackedScene) var Explosion
 
+signal blowup
+
 export var min_speed = 200
 export var max_speed = 500
 var min_rotation_speed = -10
@@ -26,11 +28,11 @@ func _on_Asteroid_body_shape_entered(body_id, body, body_shape, local_shape):
 	random_rotation()
 
 func blowup():
+	emit_signal("blowup")
 	var e = Explosion.instance()
 	get_parent().add_child(e)
 	e.position = position
 	e.start()
-	
 	
 	queue_free()
 

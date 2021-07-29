@@ -7,6 +7,8 @@ export (PackedScene) var Laser
 var hauler
 var hauler_speed = 400
 
+var score = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Laser.stream.loop = false
@@ -52,6 +54,7 @@ func _on_AsteroidSpawnTimer_timeout():
 	$AsteroidPath/AsteroidSpawnLocation.offset = randi()
 	# Create a Mob instance and add it to the scene.
 	var roid = Asteroid.instance()
+	roid.connect("blowup", self, "on_Asteroid_blowup")
 	add_child(roid)
 	# Set the mob's direction perpendicular to the path direction.
 	var direction = $AsteroidPath/AsteroidSpawnLocation.rotation + PI / 2
@@ -67,3 +70,7 @@ func _on_AsteroidSpawnTimer_timeout():
 	
 func on_damage_taken():
 	$HUD.take_damage()
+
+func on_Asteroid_blowup():
+	score += 1
+	$HUD/Score.text = "Score: %s" % score
