@@ -18,6 +18,9 @@ func _ready():
 
 
 func _on_Hauler_body_entered(body):
+	if body.name.find("Asteroid", 0) > 0:
+		body.blowup()
+		
 	if (invincible == false):
 		$InvicibilityTimer.start()
 		emit_signal("damage_taken")

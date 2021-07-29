@@ -3,6 +3,7 @@ extends Node
 export (PackedScene) var Asteroid
 export (PackedScene) var Hauler
 export (PackedScene) var Laser
+export (PackedScene) var Explosion
 
 var hauler
 var hauler_speed = 400
@@ -41,7 +42,7 @@ func _process(delta):
 	
 	hauler.position += velocity * delta
 	hauler.position.x = clamp(hauler.position.x, 0, 1024)
-	hauler.position.y = clamp(hauler.position.y, 0, 600)	
+	hauler.position.y = clamp(hauler.position.y, 0, 600)
 	
 	# fire laser
 	if Input.is_action_just_pressed("ui_accept"):	
@@ -74,6 +75,13 @@ func _on_AsteroidSpawnTimer_timeout():
 	
 func on_damage_taken():
 	hauler_health -= 20
+	if hauler_health <= 0:
+		var e = Explosion.instance()
+		add_child(e)
+		e.position = hauler.position
+		e.start()
+		get_tree().paused = true
+		
 	$HUD.set_health(hauler_health)
 
 func on_Asteroid_blowup():
