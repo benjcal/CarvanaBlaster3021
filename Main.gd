@@ -6,6 +6,7 @@ export (PackedScene) var Laser
 
 var hauler
 var hauler_speed = 400
+var hauler_health = 100
 
 var score = 0
 
@@ -37,8 +38,10 @@ func _process(delta):
 		velocity.y -= 1
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * hauler_speed
-
+	
 	hauler.position += velocity * delta
+	hauler.position.x = clamp(hauler.position.x, 0, 1024)
+	hauler.position.y = clamp(hauler.position.y, 0, 600)	
 	
 	# fire laser
 	if Input.is_action_just_pressed("ui_accept"):	
@@ -70,7 +73,8 @@ func _on_AsteroidSpawnTimer_timeout():
 	 # Replace with function body.
 	
 func on_damage_taken():
-	$HUD.take_damage()
+	hauler_health -= 20
+	$HUD.set_health(hauler_health)
 
 func on_Asteroid_blowup():
 	$Boom.play()

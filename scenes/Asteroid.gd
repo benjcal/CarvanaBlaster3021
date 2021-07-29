@@ -25,6 +25,7 @@ func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()
 
 func _on_Asteroid_body_shape_entered(body_id, body, body_shape, local_shape):
+	print(body.name)
 	random_rotation()
 
 func blowup():

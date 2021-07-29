@@ -13,14 +13,11 @@ func _ready():
 	$Bar/HealthGauge.set_value(health_points)
 	pass # Replace with function body.
 
-func take_damage():
-	health_points -= 20
+func set_health(health):
+	if (health < 0):
+		health = 0
 
-	if (health_points < 0):
-		health_points = 0
-
-	$Bar/HealthGauge.set_value(health_points)
-
+	$Bar/HealthGauge.set_value(health)
 
 func destroyed_asteroid():
 	score += 100
