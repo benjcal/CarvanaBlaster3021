@@ -42,7 +42,7 @@ func random_rotation():
 func _on_Asteroid_body_entered(body):
 	if body.name.find("Laser", 0) > 0:
 		blowup()
-		
+
 func random_type():
 	var rand = rand_range(1, 100)
 	$StandardSprite.hide()

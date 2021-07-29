@@ -12,6 +12,7 @@ var score = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Laser.stream.loop = false
+	$Boom.stream.loop = false
 	randomize()
 	new_game()
 
@@ -72,5 +73,6 @@ func on_damage_taken():
 	$HUD.take_damage()
 
 func on_Asteroid_blowup():
+	$Boom.play()
 	score += 1
 	$HUD/Score.text = "Score: %s" % score
