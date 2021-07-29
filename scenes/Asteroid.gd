@@ -8,13 +8,15 @@ var min_rotation_speed = -10
 var max_rotation_speed = 10
 var base_rotation_speed = PI / 128
 var rotation_speed = 0
+var current_sprite
 
 func _ready():
+	random_type()
 	random_rotation()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	$Sprite.rotation += rotation_speed
+	current_sprite.rotation += rotation_speed
 #	pass
 
 func _on_VisibilityNotifier2D_screen_exited():
@@ -36,4 +38,22 @@ func random_rotation():
 func _on_Asteroid_body_entered(body):
 	if body.name.find("Laser", 0) > 0:
 		blowup()
+		
+func random_type():
+	var rand = rand_range(1, 100)
+	$StandardSprite.hide()
+	$Nixon1.hide()
+	$Nixon2.hide()
+	$NixonRoid.hide()
+	
+	if rand > 95:
+		current_sprite = $NixonRoid
+	elif rand > 85:
+		current_sprite = $Nixon1
+	elif rand > 75:
+		current_sprite = $Nixon2
+	else:
+		current_sprite = $StandardSprite
+	
+	current_sprite.show()
 
