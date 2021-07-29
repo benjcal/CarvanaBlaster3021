@@ -17,6 +17,7 @@ func new_game():
 	$StartTimer.start()
 	
 	hauler = Hauler.instance()
+	hauler.position = Vector2(150, 300)
 	hauler.connect("damage_taken", self, "on_damage_taken")
 	add_child(hauler)
 
@@ -40,7 +41,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("ui_accept"):	
 		var laser = Laser.instance()
 		add_child(laser)
-		laser.position = Vector2(hauler.position.x + 80, hauler.position.y) 
+		laser.position = Vector2(hauler.position.x + 120, hauler.position.y) 
 		
 		laser.linear_velocity = Vector2(1500, 0)
 	
