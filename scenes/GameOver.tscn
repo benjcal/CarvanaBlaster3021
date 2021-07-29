@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/PressStart2P.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scenes/GameOver.gd" type="Script" id=2]
+[ext_resource path="res://assets/winMusic.ogg" type="AudioStream" id=3]
+[ext_resource path="res://assets/menuSelect.ogg" type="AudioStream" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 45
@@ -68,5 +70,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Select" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[node name="BGMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
 [connection signal="gui_input" from="." to="." method="_on_GameOver_gui_input"]
 [connection signal="text_entered" from="LineEdit" to="." method="_on_LineEdit_text_entered"]
+[connection signal="request_completed" from="HTTPRequest" to="." method="_on_HTTPRequest_request_completed"]
