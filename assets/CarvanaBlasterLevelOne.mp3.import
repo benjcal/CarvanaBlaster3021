@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/CarvanaBlasterLevelOne.mp3-c3b5f8221481d543de6bb8912f320845.mp3str"
+
+[deps]
+
+source_file="res://assets/CarvanaBlasterLevelOne.mp3"
+dest_files=[ "res://.import/CarvanaBlasterLevelOne.mp3-c3b5f8221481d543de6bb8912f320845.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
