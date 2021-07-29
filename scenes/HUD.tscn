@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/HUD.gd" type="Script" id=1]
 [ext_resource path="res://assets/PressStart2P.ttf" type="DynamicFontData" id=2]
@@ -6,21 +6,24 @@
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 2 )
 
-[sub_resource type="StyleBoxFlat" id=2]
+[sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 0.282353, 0.545098, 0.105882, 1 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=6]
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=4]
 font_data = ExtResource( 2 )
 
+[sub_resource type="DynamicFont" id=7]
+font_data = ExtResource( 2 )
+
 [node name="HUD" type="MarginContainer"]
 anchor_right = 1.0
 margin_left = 20.5
-margin_top = 19.5
+margin_top = 19.0
 margin_right = -19.5
-margin_bottom = 35.5
+margin_bottom = 35.0
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true,
@@ -42,8 +45,8 @@ margin_left = 100.0
 margin_right = 250.0
 margin_bottom = 16.0
 rect_min_size = Vector2( 150, 0 )
-custom_styles/fg = SubResource( 2 )
-custom_fonts/font = SubResource( 3 )
+custom_styles/fg = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 value = 75.0
 
 [node name="Score" type="Label" parent="."]
@@ -52,3 +55,10 @@ margin_bottom = 16.0
 custom_fonts/font = SubResource( 4 )
 text = "Score: 0"
 align = 1
+
+[node name="Level" type="Label" parent="."]
+margin_right = 984.0
+margin_bottom = 16.0
+custom_fonts/font = SubResource( 7 )
+text = "Level 1"
+align = 2
