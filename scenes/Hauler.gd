@@ -5,6 +5,7 @@ extends Area2D
 # var b = "text"
 
 signal damage_taken
+var invincible = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,5 +18,11 @@ func _ready():
 
 
 func _on_Hauler_body_entered(body):
-	emit_signal("damage_taken")
-	$CollisionShape2D.set_deferred("disabled", true)
+	if (invincible == false):
+		$InvicibilityTimer.start()
+		emit_signal("damage_taken")
+		invincible = true
+
+func _on_InvicibilityTimer_timeout():
+	invincible = false
+	pass # Replace with function body.
