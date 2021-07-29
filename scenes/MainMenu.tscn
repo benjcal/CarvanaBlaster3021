@@ -3,8 +3,8 @@
 [ext_resource path="res://scenes/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://assets/PressStart2P.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/menuMusic1.mp3" type="AudioStream" id=3]
-[ext_resource path="res://assets/menuSelect.mp3" type="AudioStream" id=4]
-[ext_resource path="res://assets/menuNavigate.mp3" type="AudioStream" id=5]
+[ext_resource path="res://assets/menuNavigate.ogg" type="AudioStream" id=4]
+[ext_resource path="res://assets/menuSelect.ogg" type="AudioStream" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 40
@@ -61,7 +61,12 @@ __meta__ = {
 stream = ExtResource( 3 )
 
 [node name="Nav" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 5 )
+stream = ExtResource( 4 )
 
 [node name="Select" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 4 )
+stream = ExtResource( 5 )
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

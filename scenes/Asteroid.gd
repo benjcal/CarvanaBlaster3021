@@ -30,6 +30,8 @@ func blowup():
 	get_parent().add_child(e)
 	e.position = position
 	e.start()
+	
+	
 	queue_free()
 
 func random_rotation():

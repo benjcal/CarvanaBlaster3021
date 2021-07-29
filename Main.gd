@@ -7,14 +7,14 @@ export (PackedScene) var Laser
 var hauler
 var hauler_speed = 400
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$Laser.stream.loop = false
 	randomize()
 	new_game()
 
 func new_game():
-	$StartTimer.start()
+	$AsteroidSpawnTimer.start()
 	
 	hauler = Hauler.instance()
 	hauler.position = Vector2(150, 300)
@@ -39,15 +39,12 @@ func _process(delta):
 	
 	# fire laser
 	if Input.is_action_just_pressed("ui_accept"):	
+		$Laser.play()
 		var laser = Laser.instance()
 		add_child(laser)
 		laser.position = Vector2(hauler.position.x + 120, hauler.position.y) 
 		
 		laser.linear_velocity = Vector2(1500, 0)
-	
-func _on_StartTimer_timeout():
-	$AsteroidSpawnTimer.start()
-	# Replace with function body.
 
 
 func _on_AsteroidSpawnTimer_timeout():

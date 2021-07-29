@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Asteroid.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://assets/Solar System B1.png" type="Texture" id=6]
 [ext_resource path="res://scenes/HUD.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/CarvanaBlasterLevelOne.mp3" type="AudioStream" id=8]
+[ext_resource path="res://assets/laser1.ogg" type="AudioStream" id=9]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -21,6 +22,7 @@ Hauler = ExtResource( 3 )
 Laser = ExtResource( 4 )
 
 [node name="AsteroidSpawnTimer" type="Timer" parent="."]
+wait_time = 0.4
 
 [node name="AsteroidPath" type="Path2D" parent="."]
 curve = SubResource( 1 )
@@ -32,10 +34,6 @@ __meta__ = {
 position = Vector2( 1024, 0 )
 rotation = 1.57083
 
-[node name="StartTimer" type="Timer" parent="."]
-wait_time = 2.0
-one_shot = true
-
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 script = ExtResource( 5 )
 
@@ -46,11 +44,13 @@ motion_mirroring = Vector2( 5120, 0 )
 position = Vector2( 0, 304 )
 texture = ExtResource( 6 )
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="BGMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
 autoplay = true
 
 [node name="HUD" parent="." instance=ExtResource( 7 )]
 
+[node name="Laser" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+
 [connection signal="timeout" from="AsteroidSpawnTimer" to="." method="_on_AsteroidSpawnTimer_timeout"]
-[connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
