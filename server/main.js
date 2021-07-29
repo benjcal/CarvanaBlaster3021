@@ -18,8 +18,11 @@ app.get("/", (req, res) => {
     res.send(JSON.stringify(leaderboard))
 })
 
-app.put("/", (req, res) => {
-    leaderboard.push(req.body)
+app.get("/add", (req, res) => {
+    leaderboard.push({
+        name: req.query.name,
+        score: req.query.score
+    })
     leaderboard.sort((a, b) => (a.score < b.score) ? 1 : -1)
     fs.writeFileSync("leaderboard.json", JSON.stringify(leaderboard))
     res.send(JSON.stringify(leaderboard))
