@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Asteroid.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://assets/laser1.ogg" type="AudioStream" id=9]
 [ext_resource path="res://assets/explodeSfx.ogg" type="AudioStream" id=10]
 [ext_resource path="res://scenes/Explosion.tscn" type="PackedScene" id=11]
+[ext_resource path="res://assets/Fast Dust 2.png" type="Texture" id=12]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -38,14 +39,22 @@ position = Vector2( 1024, 0 )
 rotation = 1.57083
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+offset = Vector2( 0, 304 )
+transform = Transform2D( 1, 0, 0, 1, 0, 304 )
 script = ExtResource( 5 )
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_mirroring = Vector2( 5120, 0 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 0, 304 )
 texture = ExtResource( 6 )
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 5, 1 )
+motion_mirroring = Vector2( 5120, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
+texture = ExtResource( 12 )
 
 [node name="BGMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
