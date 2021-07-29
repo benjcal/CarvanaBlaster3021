@@ -5,8 +5,10 @@ var selected = 0
 const selected_color = Color(1,1,1)
 const default_color = Color(0.5,0.5,0.5)
 
+var sound_timeout
+
 func _ready():
-	$AudioStreamPlayer.play()
+	$BGMusic.play()
 
 func _process(delta):
 	if Input.is_action_just_pressed("ui_down"):
