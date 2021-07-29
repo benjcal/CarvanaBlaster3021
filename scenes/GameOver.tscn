@@ -41,6 +41,7 @@ margin_left = 457.0
 margin_top = 330.0
 margin_right = 921.0
 margin_bottom = 367.0
+input_pass_on_modal_close_click = false
 custom_fonts/font = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
