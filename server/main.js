@@ -23,7 +23,7 @@ app.get("/add", (req, res) => {
         level: req.query.level
     })
     leaderboard.sort((a, b) => (parseInt(a.score) < parseInt(b.score)) ? 1 : -1)
-    fs.writeFileSync("~/leaderboard.json", JSON.stringify(leaderboard))
+    fs.writeFileSync("/root/leaderboard.json", JSON.stringify(leaderboard))
     res.send(JSON.stringify(leaderboard))
 })
 
