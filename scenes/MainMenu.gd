@@ -9,6 +9,7 @@ func _ready():
 	$BGMusic.play()
 	$Nav.stream.loop = false
 	$Select.stream.loop = false
+	
 
 func _process(delta):
 	if Input.is_action_just_pressed("ui_down"):
@@ -32,6 +33,11 @@ func _process(delta):
 	if selected == 1:
 		$Start.set("custom_colors/font_color",default_color)	
 		$Leaderboard.set("custom_colors/font_color",selected_color)
+		
+	spin_vending_machine(delta)
+		
+func spin_vending_machine(delta):
+	$VendingMachine.rotate(delta * PI/100)
 
 func _on_Timer_timeout():
 	if selected == 0:

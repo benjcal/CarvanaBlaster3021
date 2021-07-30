@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://assets/PressStart2P.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/menuMusic1.mp3" type="AudioStream" id=3]
 [ext_resource path="res://assets/menuNavigate.ogg" type="AudioStream" id=4]
 [ext_resource path="res://assets/menuSelect.ogg" type="AudioStream" id=5]
+[ext_resource path="res://assets/Vending Space Station Mutant white.png" type="Texture" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 40
@@ -69,5 +70,10 @@ stream = ExtResource( 5 )
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="VendingMachine" type="Sprite" parent="."]
+position = Vector2( 160, 336 )
+z_index = -1
+texture = ExtResource( 6 )
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
