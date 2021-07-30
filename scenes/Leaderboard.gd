@@ -17,9 +17,9 @@ func _process(delta):
 
 func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 	var json = JSON.parse(body.get_string_from_utf8())
-	if len(json.result) < 8:
+	if len(json.result) < 10:
 		for i in len(json.result):
 			$scores.text += "%s Level: %s Score: %s\n" % [json.result[i].name, json.result[i].level, json.result[i].score]
 	else:
-		for i in range(8):
+		for i in range(10):
 			$scores.text += "%s Level: %s Score: %s\n" % [json.result[i].name, json.result[i].level, json.result[i].score]
