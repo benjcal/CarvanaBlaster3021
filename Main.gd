@@ -47,17 +47,27 @@ func _process(delta):
 	
 	# move hauler
 	var velocity = Vector2()
+	var up
+	var down
+	var left
+	var right
+	
 	if Input.is_action_pressed("ui_right"):
+		right = true;
 		velocity.x += 1
 	if Input.is_action_pressed("ui_left"):
+		left = true
 		velocity.x -= 1
 	if Input.is_action_pressed("ui_down"):
+		down = true
 		velocity.y += 1
 	if Input.is_action_pressed("ui_up"):
+		up = true
 		velocity.y -= 1
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * hauler_speed
-	
+		
+	hauler.update_animation(left, up, right, down)
 	hauler.position += velocity * delta
 	hauler.position.x = clamp(hauler.position.x, 0, 1024)
 	hauler.position.y = clamp(hauler.position.y, 0, 600)
