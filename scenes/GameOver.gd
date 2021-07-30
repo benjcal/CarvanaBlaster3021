@@ -10,7 +10,7 @@ func _ready():
 
 func _on_LineEdit_text_entered(new_text):
 	$Select.play()
-	$HTTPRequest.request("http://138.197.78.108:5000/add?name=%s&score=%s&level=%s" % [$LineEdit.text, score, level])
+	$HTTPRequest.request("https://cvnaapi.bcalderon.io/add?name=%s&score=%s&level=%s" % [$LineEdit.text, score, level])
 
 
 func _on_HTTPRequest_request_completed(result, response_code, headers, body):

@@ -5,7 +5,7 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$HTTPRequest.request("http://138.197.78.108:5000")
+	$HTTPRequest.request("https://cvnaapi.bcalderon.io")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
