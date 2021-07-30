@@ -5,6 +5,7 @@ export (PackedScene) var Hauler
 export (PackedScene) var Laser
 export (PackedScene) var Explosion
 export (PackedScene) var WD40
+export (PackedScene) var GameOver
 
 var hauler
 var hauler_speed = 400
@@ -12,12 +13,16 @@ var hauler_health = 100
 
 var score = 0
 
+var dificulty_time = 0
+var level = 1
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Laser.stream.loop = false
 	$Boom.stream.loop = false
 	randomize()
 	new_game()
+
 
 func new_game():
 	$AsteroidSpawnTimer.start()
@@ -29,6 +34,17 @@ func new_game():
 	add_child(hauler)
 
 func _process(delta):
+	dificulty_time += delta
+	
+	if dificulty_time > 10:
+		dificulty_time = 0
+		level += 1
+		$HUD.set_level(level)
+		
+		$AsteroidSpawnTimer.wait_time = $AsteroidSpawnTimer.wait_time/1.5
+		print($AsteroidSpawnTimer.wait_time)
+	
+	
 	# move hauler
 	var velocity = Vector2()
 	if Input.is_action_pressed("ui_right"):
@@ -76,15 +92,22 @@ func _on_AsteroidSpawnTimer_timeout():
 	 # Replace with function body.
 	
 func on_damage_taken():
-	hauler_health -= 20
+	hauler_health -= 25
 	
 	
 	if hauler_health <= 0:
 		var e = Explosion.instance()
 		add_child(e)
 		e.position = hauler.position
-		e.start()
+		hauler.hide()
 		get_tree().paused = true
+	
+		$Boom.play()	
+		e.pause_mode = Node.PAUSE_MODE_PROCESS
+		e.scale = Vector2(2.5,2.5)
+		e.start()
+		$GameOverTimer.start()
+		
 		
 	$HUD.set_health(hauler_health)
 
@@ -92,7 +115,6 @@ func on_Asteroid_blowup():
 	$Boom.play()
 	score += 1
 	$HUD/Score.text = "Score: %s" % score
-
 
 func _on_CollectableTimer_timeout():
 	var rand = rand_range(1, 100)
@@ -112,3 +134,15 @@ func on_wd_collect():
 		hauler_health = 100
 	
 	$HUD.set_health(hauler_health)
+
+func _on_GameOverTimer_timeout():
+	get_tree().paused = false
+	var res = load("res://scenes/GameOver.tscn")
+	var go = res.instance()
+	go.score = score
+	go.level = level
+	
+	var ps = PackedScene.new()
+	ps.pack(go)
+	
+	get_tree().change_scene_to(ps)
