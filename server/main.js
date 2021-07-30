@@ -11,6 +11,7 @@ app.use(express.urlencoded({ extended: true }))
 
 app.get("/", (req, res) => {
     var leaderboard = JSON.parse(fs.readFileSync("leaderboard.json").toString())
+    leaderboard.sort((a, b) => (a.score < b.score) ? 1 : -1)
     res.send(JSON.stringify(leaderboard))
 })
 
