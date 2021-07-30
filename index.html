@@ -1,25 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carvana Blaster 3021</title>
+    <link rel="stylesheet" href="pico-master/css/pico.min.css">
     <style>
         body {
             width: 1100px;
             margin: auto;
         }
 
+        .cool {
+                        background: #FF0000;
+background: -webkit-linear-gradient(to left, #FF0000 0%, #ffff00 50%, #FF0000 100%);
+background: -moz-linear-gradient(to left, #FF0000 0%, #ffff00 50%, #FF0000 100%);
+background: linear-gradient(to left, #FF0000 0%, #ffff00 50%, #FF0000 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+        }
+
     </style>
 </head>
 <body>
-    <h1>Welcome to Carvana Blaster 3021!</h1>
+    <h1>Welcome to <span class="cool">Carvana Blaster 3021</span>!</h1>
+    <p ><i>"The year is 3021. House Carvana has prospered under the reign of Ernie Garcia XXIII, and his dominion now expands into the border worlds. A new hub opens on the desert planet Phoenix Secundus, where Car Maximus also seeks to expand their regime. It is from this hub you are tasked with a dangerous deivery mission, equipped with a secret new space hauler... Good luck."</i></p>
     <iframe id="game" src="/build/index.html" frameborder="0" width="1024" height="600" ></iframe>
-    <ul>
-        <li>Arrows to move</li>
-        <li>Space to fire</li>
-    </ul>
+    
+    <h3>Instructions</h3>
+    <p>Click on the game screen to start <br>
+    Use Arrow Keys to navigate menus and ENTER to select <br>
+    In game use Arrow Keys to move ship and SPACE to fire!</p>
 </body>
 </script>
 </html>
