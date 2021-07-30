@@ -128,7 +128,7 @@ func _on_CollectableTimer_timeout():
 		wd.connect("collect", self, "on_wd_collect")
 
 func on_wd_collect():
-	hauler_health += 20
+	hauler_health += 25
 	
 	if (hauler_health > 100):
 		hauler_health = 100

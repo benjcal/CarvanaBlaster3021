@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Asteroid.tscn" type="PackedScene" id=2]
@@ -11,9 +11,8 @@
 [ext_resource path="res://assets/laser1.ogg" type="AudioStream" id=9]
 [ext_resource path="res://assets/explodeSfx.ogg" type="AudioStream" id=10]
 [ext_resource path="res://scenes/Explosion.tscn" type="PackedScene" id=11]
-[ext_resource path="res://assets/Fast Dust 2.png" type="Texture" id=12]
-[ext_resource path="res://scenes/WD40.tscn" type="PackedScene" id=13]
 [ext_resource path="res://scenes/GameOver.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/WD40.tscn" type="PackedScene" id=13]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -60,7 +59,6 @@ motion_scale = Vector2( 5, 1 )
 motion_mirroring = Vector2( 5120, 0 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
-texture = ExtResource( 12 )
 
 [node name="BGMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
