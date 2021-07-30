@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://WD40.gd" type="Script" id=1]
+[ext_resource path="res://scenes/Explosion.tscn" type="PackedScene" id=2]
+
+[node name="WD40" type="Area2D"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+Explosion = ExtResource( 2 )
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+polygon = PoolVector2Array( -32, -24, -40, 24, 32, 24, 32, -24 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -32, -24, 32, -24, 32, 24, -40, 24 )
+
+[connection signal="area_entered" from="." to="." method="_on_WD40_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_WD40_body_entered"]

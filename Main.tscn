@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Asteroid.tscn" type="PackedScene" id=2]
@@ -11,6 +11,8 @@
 [ext_resource path="res://assets/laser1.ogg" type="AudioStream" id=9]
 [ext_resource path="res://assets/explodeSfx.ogg" type="AudioStream" id=10]
 [ext_resource path="res://scenes/Explosion.tscn" type="PackedScene" id=11]
+[ext_resource path="res://assets/Fast Dust 2.png" type="Texture" id=12]
+[ext_resource path="res://scenes/WD40.tscn" type="PackedScene" id=13]
 [ext_resource path="res://scenes/GameOver.tscn" type="PackedScene" id=12]
 
 [sub_resource type="Curve2D" id=1]
@@ -24,6 +26,7 @@ Asteroid = ExtResource( 2 )
 Hauler = ExtResource( 3 )
 Laser = ExtResource( 4 )
 Explosion = ExtResource( 11 )
+WD40 = ExtResource( 13 )
 GameOver = ExtResource( 12 )
 
 [node name="HUD" parent="." instance=ExtResource( 7 )]
@@ -42,14 +45,22 @@ position = Vector2( 1024, 0 )
 rotation = 1.57083
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+offset = Vector2( 0, 304 )
+transform = Transform2D( 1, 0, 0, 1, 0, 304 )
 script = ExtResource( 5 )
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_mirroring = Vector2( 5120, 0 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 0, 304 )
 texture = ExtResource( 6 )
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 5, 1 )
+motion_mirroring = Vector2( 5120, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
+texture = ExtResource( 12 )
 
 [node name="BGMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
@@ -63,8 +74,12 @@ stream = ExtResource( 9 )
 pause_mode = 2
 stream = ExtResource( 10 )
 
+[node name="CollectableTimer" type="Timer" parent="."]
+wait_time = 5.0
+
 [node name="GameOverTimer" type="Timer" parent="."]
 pause_mode = 2
 
 [connection signal="timeout" from="AsteroidSpawnTimer" to="." method="_on_AsteroidSpawnTimer_timeout"]
+[connection signal="timeout" from="CollectableTimer" to="." method="_on_CollectableTimer_timeout"]
 [connection signal="timeout" from="GameOverTimer" to="." method="_on_GameOverTimer_timeout"]

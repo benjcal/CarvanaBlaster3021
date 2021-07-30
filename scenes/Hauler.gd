@@ -28,4 +28,4 @@ func _on_Hauler_body_entered(body):
 
 func _on_InvicibilityTimer_timeout():
 	invincible = false
-	pass # Replace with function body.
+

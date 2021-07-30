@@ -4,6 +4,7 @@ export (PackedScene) var Asteroid
 export (PackedScene) var Hauler
 export (PackedScene) var Laser
 export (PackedScene) var Explosion
+export (PackedScene) var WD40
 export (PackedScene) var GameOver
 
 var hauler
@@ -25,6 +26,7 @@ func _ready():
 
 func new_game():
 	$AsteroidSpawnTimer.start()
+	$CollectableTimer.start()
 	
 	hauler = Hauler.instance()
 	hauler.position = Vector2(150, 300)
@@ -114,6 +116,24 @@ func on_Asteroid_blowup():
 	score += 1
 	$HUD/Score.text = "Score: %s" % score
 
+func _on_CollectableTimer_timeout():
+	var rand = rand_range(1, 100)
+	
+	if (rand > 75):
+		$AsteroidPath/AsteroidSpawnLocation.offset = randi()
+		var wd = WD40.instance()
+		add_child(wd)
+		var direction = $AsteroidPath/AsteroidSpawnLocation.rotation + PI / 2
+		wd.position = $AsteroidPath/AsteroidSpawnLocation.position
+		wd.connect("collect", self, "on_wd_collect")
+
+func on_wd_collect():
+	hauler_health += 20
+	
+	if (hauler_health > 100):
+		hauler_health = 100
+	
+	$HUD.set_health(hauler_health)
 
 func _on_GameOverTimer_timeout():
 	get_tree().paused = false
