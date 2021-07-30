@@ -1,14 +1,16 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/Missle_multi_texture.png" type="Texture" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 18.4495, 4.17747 )
 
 [node name="Laser" type="RigidBody2D"]
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-position = Vector2( -21.2008, -5.29917 )
-color = Color( 0.933333, 0.878431, 0.0588235, 1 )
-polygon = PoolVector2Array( 1.5, 0.5, 40, 1.5, 39, 8.5, 4, 7.5 )
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+rotation = 1.5708
+scale = Vector2( 0.85, 0.85 )
+texture = ExtResource( 1 )

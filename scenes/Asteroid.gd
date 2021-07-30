@@ -49,6 +49,7 @@ func random_type():
 	$Nixon1.hide()
 	$Nixon2.hide()
 	$NixonRoid.hide()
+	$BrokenCar.hide()
 	$CollisionShape2D.shape.radius = 64
 	
 	if rand > 95:
@@ -57,6 +58,8 @@ func random_type():
 		current_sprite = $Nixon1
 	elif rand > 75:
 		current_sprite = $Nixon2
+	elif rand > 65:
+		current_sprite = $BrokenCar
 	else:
 		current_sprite = $StandardSprite
 		$CollisionShape2D.shape.radius = 30
