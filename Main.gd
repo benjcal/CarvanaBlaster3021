@@ -90,7 +90,7 @@ func _on_AsteroidSpawnTimer_timeout():
 	 # Replace with function body.
 	
 func on_damage_taken():
-	hauler_health -= 20
+	hauler_health -= 25
 	
 	
 	if hauler_health <= 0:
