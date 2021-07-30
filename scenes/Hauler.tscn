@@ -20,7 +20,7 @@ script = ExtResource( 1 )
 frames = SubResource( 1 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PoolVector2Array( 112, -40, 112, 32, -120, 32, -120, -24, 40, -24, 40, -40 )
+polygon = PoolVector2Array( 104, -24, 104, 24, -64, 24, -64, -16, 40, -16, 40, -24 )
 
 [connection signal="body_entered" from="." to="." method="_on_Hauler_body_entered"]
 [connection signal="timeout" from="InvicibilityTimer" to="." method="_on_InvicibilityTimer_timeout"]
