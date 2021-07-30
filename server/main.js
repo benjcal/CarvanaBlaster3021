@@ -11,7 +11,7 @@ app.use(express.urlencoded({ extended: true }))
 
 app.get("/", (req, res) => {
     var leaderboard = JSON.parse(fs.readFileSync("leaderboard.json").toString())
-    leaderboard.sort((a, b) => (a.score < b.score) ? 1 : -1)
+    leaderboard.sort((a, b) => (parseInt(a.score) < parseInt(b.score)) ? 1 : -1)
     res.send(JSON.stringify(leaderboard))
 })
 
@@ -22,7 +22,7 @@ app.get("/add", (req, res) => {
         score: req.query.score,
         level: req.query.level
     })
-    leaderboard.sort((a, b) => (a.score < b.score) ? 1 : -1)
+    leaderboard.sort((a, b) => (parseInt(a.score) < parseInt(b.score)) ? 1 : -1)
     fs.writeFileSync("leaderboard.json", JSON.stringify(leaderboard))
     res.send(JSON.stringify(leaderboard))
 })
